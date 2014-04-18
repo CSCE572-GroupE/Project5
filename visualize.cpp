@@ -23,17 +23,26 @@ void imageReceived(const sensor_msgs::ImageConstPtr& image)
 
     cv::imshow("unedited_window", image_matrix);
 
-//    for (int i = 0; i < width; i++){
-//        for (int j = 0; j < height; j++){
-//            cv::Vec3b &pixel = image_matrix.at<cv::Vec3b>(i,j);
-//            if (i > width/8 || j > height/8 ){
-////                  ROS_INFO("image[%d,%d] = (r=%d,g=%d,b=%d)", i, j, pixel[2], pixel[1], pixel[0]);
-//                pixel[0] = 0;
-//                pixel[1] = 0;
-//                pixel[2] = 0;
-//            }
-//        }
-//    }
+
+    for (int i = 0; i < width; i++){
+        for (int j = 0; j < height; j++){
+
+            try {
+                cv::Vec3b &pixel = image_matrix.at<cv::Vec3b>(j,i);
+                if ((pixel[0] < 190 && pixel[1] < 225 && pixel[2] < 225) || (pixel[0] + pixel[1] + pixel[2] > 620) || j < height/2 || (i < width/2 - 20 || i > width/2 + 20) ){
+            //    if (pixel[0] > 180 && pixel[1] > 25 && pixel[1] < 200 && pixel[2] < 50){
+                    pixel[0] = 0;
+                    pixel[1] = 0;
+                    pixel[2] = 0;
+                } else {
+//                    ROS_INFO("image[%d,%d] = (r=%d,g=%d,b=%d)", i, j, pixel[2], pixel[1], pixel[0]);
+
+                }
+            } catch(int e){
+                ROS_INFO_STREAM("ERROR");
+            }
+        }
+    }
 
     ROS_INFO_STREAM("BEFORE DISPLAY");
 
