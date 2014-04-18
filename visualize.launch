@@ -1,0 +1,6 @@
+<launch>
+	<node name="visualize" pkg="project5" type="visualize" output="screen">
+		<param name="image_transport" value="theora" />
+	</node>
+	
+</launch>
