@@ -26,7 +26,7 @@ const int RATE = 10;
 const int VIEW_FINDER_WIDTH = 200;
 const int VIEW_FINDER_HEIGHT = 75;
 
-const int EXTERNAL_VIEW_FINDER_WIDTH = 600;
+const int EXTERNAL_VIEW_FINDER_WIDTH = 640;
 const int EXTERNAL_VIEW_FINDER_HEIGHT = 125;
 
 bool allow_change_of_direction = true;
@@ -122,36 +122,16 @@ void imageReceived(const sensor_msgs::ImageConstPtr& image)
                     pixel[1] = 0;
                     pixel[2] = 0;
                 }
-//                if ((pixel[0] < 190 && pixel[1] < 225 && pixel[2] < 225) || (pixel[0] + pixel[1] + pixel[2] > 620) || j < height/2){ // || (i < width/2 - 20 || i > width/2 + 20) ){
-//            //    if (pixel[0] > 180 && pixel[1] > 25 && pixel[1] < 200 && pixel[2] < 50){
-//                    pixel[0] = 0;
-//                    pixel[1] = 0;
-//                    pixel[2] = 0;
-//                } else {
-//                    ROS_INFO("image[%d,%d] = (r=%d,g=%d,b=%d)", i, j, pixel[2], pixel[1], pixel[0]);
-
-//                }
             } catch(int e){
                 ROS_INFO_STREAM("ERROR");
             }
         }
     }
-
-    //ROS_INFO_STREAM("BEFORE DISPLAY");
-
     cv::imshow("edited_window", image_matrix);
 
     ROS_INFO_STREAM("END OF CALLBACK");
 
     hasCallback = true;
-
-   // cv::Vec3b pixel = mat.at<cv::Vec3b>(i,j);
-   // ROS_INFO("image[%d,%d] = (r=%d,g=%d,b=%d)", i, j, pixel[2], pixel[1], pixel[0])
-
-//    cv::Vec3b &pixel = mat.at<cv::Vec3b>(i,j);
-//    pixel[0] = 0;
-//    pixel[1] = 0;
-//    pixel[2] = 0;
 }
 
 void saveOuterBias(){
@@ -178,7 +158,7 @@ void saveOuterBias(){
         largest_section = 2;
     }
 
-    if (recentHistoryBias.size() > 50){
+    if (recentHistoryBias.size() > 35){
         recentHistoryBias.erase(recentHistoryBias.begin());
     }
     recentHistoryBias.push_back(largest_section);
@@ -204,7 +184,6 @@ int determineBestTurn(){
     } else {
         return_value = -1;
     }
-    ROS_INFO_STREAM("DETERMINING TURN: " << return_value);
     return return_value;
 }
 
@@ -256,22 +235,20 @@ int main(int argc, char **argv)
                 } else {
                     largest_section = 3;
                 }
-
-//                int largest_section = sectionACount > sectionBCount ? (sectionACount > sectionCCount ? 1 : (sectionBCount > sectionCCount ? 2 : 3)) : (sectionBCount > sectionCCount ? 2 : (sectionACount > sectionCCount ? 1 : 3));
                 switch(largest_section){
                     case 1:
                         ROS_INFO_STREAM("LEFT");
                         twistObject.angular.z = M_PI/8.0f/RATE;
-                        twistObject.linear.x = 1.0f/RATE;
+                        twistObject.linear.x = 2.0f/RATE;
                         break;
                     case 2:
                         ROS_INFO_STREAM("STRAIGHT");
-                        twistObject.linear.x = 2.0f/RATE;
+                        twistObject.linear.x = 3.0f/RATE;
                         break;
                     case 3:
                         ROS_INFO_STREAM("RIGHT");
                         twistObject.angular.z = -M_PI/8.0f/RATE;
-                        twistObject.linear.x = 1.0f/RATE;
+                        twistObject.linear.x = 2.0f/RATE;
                         break;
                     default:
                         break;
@@ -285,7 +262,7 @@ int main(int argc, char **argv)
                     turn_value = determineBestTurn();
                 }
                 allow_change_of_direction = false;
-                twistObject.angular.z = turn_value *  M_PI/2.0f/RATE;
+                twistObject.angular.z = turn_value *  M_PI/RATE;
             } else {
                 twistObject.linear.x = -1;
             }
@@ -302,8 +279,6 @@ int main(int argc, char **argv)
         ROS_INFO_STREAM("\n");
 
     }
-    //ros::spin();
-
     cvDestroyWindow("unedited_window");
     cvDestroyWindow("edited_window");
 }

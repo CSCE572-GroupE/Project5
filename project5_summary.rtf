@@ -1,0 +1,52 @@
+{\rtf1\ansi\deff3\adeflang1025
+{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\froman\fprq2\fcharset128 Liberation Serif{\*\falt Times New Roman};}{\f4\fswiss\fprq2\fcharset128 Liberation Sans{\*\falt Arial};}{\f5\fmodern\fprq1\fcharset128 Courier New;}{\f6\fnil\fprq2\fcharset128 WenQuanYi Micro Hei;}{\f7\fnil\fprq2\fcharset128 Lohit Hindi;}{\f8\fnil\fprq0\fcharset128 Lohit Hindi;}}
+{\colortbl;\red0\green0\blue0;\red128\green128\blue128;}
+{\stylesheet{\s0\snext0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\hich\af6\langfe2052\dbch\af7\afs24\alang1081\loch\f3\fs24\lang1033 Normal;}
+{\s15\sbasedon0\snext16\sb240\sa120\keepn\hich\af6\dbch\af7\afs28\loch\f4\fs28 Heading;}
+{\s16\sbasedon0\snext16\sb0\sa120 Text body;}
+{\s17\sbasedon16\snext17\sb0\sa120\dbch\af8 List;}
+{\s18\sbasedon0\snext18\sb120\sa120\noline\i\dbch\af8\afs24\ai\fs24 Caption;}
+{\s19\sbasedon0\snext19\noline\dbch\af8 Index;}
+}{\info{\author TYLER SMITH}{\creatim\yr2014\mo4\dy24\hr18\min35}{\author TYLER SMITH}{\revtim\yr2014\mo4\dy24\hr19\min53}{\printim\yr0\mo0\dy0\hr0\min0}{\comment LibreOffice}{\vern3500}}\deftab709
+
+{\*\pgdsctbl
+{\pgdsc0\pgdscuse195\pgwsxn12240\pghsxn15840\marglsxn1134\margrsxn1134\margtsxn1134\margbsxn1134\pgdscnxt0 Default;}}
+\formshade\paperh15840\paperw12240\margl1134\margr1134\margt1134\margb1134\sectd\sbknone\sectunlocked1\pgndec\pgwsxn12240\pghsxn15840\marglsxn1134\margrsxn1134\margtsxn1134\margbsxn1134\ftnbj\ftnstart1\ftnrstcont\ftnnar\aenddoc\aftnrstcont\aftnstart1\aftnnrlc
+\pgndec\pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\hich\af6\langfe2052\dbch\af7\afs24\alang1081\loch\f3\fs24\lang1033\qr{\b\afs28\ab\rtlch \ltrch\loch\fs28\loch\f5
+\tab \tab \tab \tab }{\b0\afs24\ab0\rtlch \ltrch\loch\fs24\loch\f5
+Davis Alexander}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\hich\af6\langfe2052\dbch\af7\afs24\alang1081\loch\f3\fs24\lang1033\qr{\b0\afs24\ab0\rtlch \ltrch\loch\fs24\loch\f5
+Chris Kozma}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\hich\af6\langfe2052\dbch\af7\afs24\alang1081\loch\f3\fs24\lang1033\qr{\b0\afs24\ab0\rtlch \ltrch\loch\fs24\loch\f5
+Matt Corley}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\hich\af6\langfe2052\dbch\af7\afs24\alang1081\loch\f3\fs24\lang1033\qr{\b0\afs24\ab0\rtlch \ltrch\loch\fs24\loch\f5
+Tyler Smith}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\hich\af6\langfe2052\dbch\af7\afs24\alang1081\loch\f3\fs24\lang1033\qc{\b\afs28\ab\rtlch \ltrch\loch\fs28\loch\f5
+CSCE 574 Robotics Project 5}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\hich\af6\langfe2052\dbch\af7\afs24\alang1081\loch\f3\fs24\lang1033\qc\b\afs28\ab\rtlch \ltrch\loch\fs28\loch\f5
+
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\hich\af6\langfe2052\dbch\af7\afs24\alang1081\loch\f3\fs24\lang1033{\b\afs28\ab\rtlch \ltrch\loch\fs28\loch\f5
+Description}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\hich\af6\langfe2052\dbch\af7\afs24\alang1081\loch\f3\fs24\lang1033{\b0\afs24\ab0\rtlch \ltrch\loch\fs24\loch\f5
+The first step we took in getting this project to work was setting up the image transporter to transfer theora compressed images into our program. For each image we see, we iterate through all of the pixels and check their bgr8 value. We then create a virtual view finder of pixels that we are interested. This box basically represents a rectangle in front of the robot and contains the pixels we are interested in analyzing. From these pixels, we detect how many of them are \u8220\'1cblue\u8221\'1d. We do this by running the pixel's rgb value through a set of statements that checks how high the \u8220\'1cb\u8221\'1d value is and the ratio of the \u8220\'1cb\u8221\'1d value relative to the \u8220\'1cr\u8221\'1d and \u8220\'1cg\u8221\'1d. We then have a minimum threshold for the view finder window based on the number of blue squares present. If there are enough blue squares, we then breakdown the view finder into three vertical sections and see which section has the heaviest concentration of blue squares. If the outer sections have heavier concentration, then we move the robot towards that direction while still having some linear velocity. If the heaviest con\tab concentration is in the center, we simply have the robot move linearly. }
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\hich\af6\langfe2052\dbch\af7\afs24\alang1081\loch\f3\fs24\lang1033\b0\afs24\ab0\rtlch \ltrch\loch\fs24\loch\f5
+
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\hich\af6\langfe2052\dbch\af7\afs24\alang1081\loch\f3\fs24\lang1033{\b0\afs24\ab0\rtlch \ltrch\loch\fs24\loch\f5
+This method worked pretty well and the majority of  the time the robot would complete the path. However, there were a few cases where if the robot turned a certain direction at the end of the path, it could continue onward, but it was instead turning around. To fix this, we added in a method where the robot would look farther forward and see what blue was upcoming using the same method as described above. Based on the multiple frames of looking forward, we could predict which direction was the best way to turn when the robot couldn't see any blue in front of it. }
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\hich\af6\langfe2052\dbch\af7\afs24\alang1081\loch\f3\fs24\lang1033\b\afs28\ab\rtlch \ltrch\loch\fs28\loch\f5
+
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\hich\af6\langfe2052\dbch\af7\afs24\alang1081\loch\f3\fs24\lang1033{\b\afs28\ab\rtlch \ltrch\loch\fs28\loch\f5
+Evaluation}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\hich\af6\langfe2052\dbch\af7\afs24\alang1081\loch\f3\fs24\lang1033{\b0\afs24\ab0\rtlch \ltrch\loch\fs24\loch\f5
+The robot works pretty much as expected. It completes almost any path that we tested. Most of the adjustments we had to make after initially getting it working were mainly tweaking the speed or the sensitivity to lighter and darker colors of blue. }
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\hich\af6\langfe2052\dbch\af7\afs24\alang1081\loch\f3\fs24\lang1033\b0\afs28\ab0\rtlch \ltrch\loch\fs28\loch\f5
+
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\hich\af6\langfe2052\dbch\af7\afs24\alang1081\loch\f3\fs24\lang1033{\b\afs28\ab\rtlch \ltrch\loch\fs28\loch\f5
+Allocation of Effort}
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\hich\af6\langfe2052\dbch\af7\afs24\alang1081\loch\f3\fs24\lang1033{\b0\afs24\ab0\rtlch \ltrch\loch\fs24\loch\f5
+We held three meetings to get the robot working and all members attended. During the meetings, we all participated equally. }
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\hich\af6\langfe2052\dbch\af7\afs24\alang1081\loch\f3\fs24\lang1033\b0\afs28\ab0\rtlch \ltrch\loch\fs28\loch\f5
+
+\par \pard\plain \s0\nowidctlpar{\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\cf0\kerning1\hich\af6\langfe2052\dbch\af7\afs24\alang1081\loch\f3\fs24\lang1033\b0\afs28\ab0\rtlch \ltrch\loch\fs28\loch\f5
+
+\par }
